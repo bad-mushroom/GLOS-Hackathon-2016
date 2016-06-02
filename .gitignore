@@ -5,3 +5,4 @@ Homestead.yaml
 Homestead.json
 .env
 Vagrant_Debian8.box
+.vagrant
