@@ -1,0 +1,38 @@
+# vim: ft=ruby
+
+# Vagrant Box Settings
+name       = 'GLOS'                 # Virtual Machine/Project Name
+url        = 'Vagrant_Debian8.box'  # Base box path/url
+hostname   = 'glos'                 # VM Server Hostname
+domain     = '.dev'                 # VM Server Domain Name
+ip         = '10.10.10.10'          # VM Server IP Address
+setup      = 'Vagrant.sh'           # Path to vagrant.sh
+
+Vagrant.configure(2) do |config|
+
+    # Box
+    config.vm.box = name
+    config.vm.box_url = url
+    config.vm.host_name = hostname + domain
+
+    config.vm.provider "virtualbox" do |p|
+        p.name = name
+        p.customize ["modifyvm", :id, "--memory", "2048"]
+    end
+
+    # Network
+    config.vm.network "private_network", ip: ip
+    config.vm.network :forwarded_port, guest: 80, host: 8080, auto_correct: true
+
+    # Shared folder
+    config.vm.synced_folder ".", "/var/www", id: "vagrant", :type => "nfs", :mount_options => ['noatime', 'vers=3', 'proto=udp', 'actimeo=2']
+
+    # Misc
+    config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
+
+    # Provisioning
+    config.vm.provision "shell" do |s|
+        s.path = setup
+    end
+
+end
