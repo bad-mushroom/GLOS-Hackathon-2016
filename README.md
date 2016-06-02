@@ -28,6 +28,17 @@ You'll need to configure some DNS entries in your `/etc/hosts` file.
 echo 10.10.10.10 glos.dev | sudo tee -a /etc/hosts
 ```
 
+#### Laravel/Misc Config
+
+Now that Vagrant is up and running you'll need to update Laravel's dependencies.
+```bash
+# From your project directory
+vagrant ssh
+
+cd /var/www
+composer install
+```
+
 With that you should be able to visit the web app from your browser at http://glos.dev
 
 #### Database
