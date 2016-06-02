@@ -55,4 +55,4 @@ chown vagrant:vagrant /home/vagrant/.my.cnf
 chmod 600 /home/vagrant/.my.cnf
 
 # Laravel
-chmod 777 /var/www/api/storage -R
+chmod 777 /var/www/storage -R
