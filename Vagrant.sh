@@ -52,6 +52,11 @@ echo "$MYCNF" >> /home/vagrant/.my.cnf
 chown vagrant:vagrant /home/vagrant/.my.cnf
 chmod 600 /home/vagrant/.my.cnf
 
+# Create Database
+
+mysql -u root -pvagrant -e "CREATE DATABASE glos"
+mysql -u root -pvagrant -e "GRANT ALL PRIVILEGES ON glos.* TO 'vagrant'@'localhost' IDENTIFIED BY 'vagrant'"
+
 # Laravel
 chmod 777 /var/www/storage -R
 
@@ -69,3 +74,8 @@ apt-get install -y npm
 
 # Misc
 apt-get install -y curl
+
+# GLOS App Setup
+cd /var/www
+cp .env.example .env
+./artisan migrate
