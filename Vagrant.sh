@@ -59,3 +59,13 @@ chmod 777 /var/www/storage -R
 wget --quiet https://getcomposer.org/composer.phar
 mv composer.phar /usr/local/bin/composer
 chmod +x /usr/local/bin/composer
+
+# Update Package Repo
+apt-get update -y
+
+# Front-End Build
+apt-get install -y nodejs
+apt-get install -y npm
+
+# Misc
+apt-get install -y curl
