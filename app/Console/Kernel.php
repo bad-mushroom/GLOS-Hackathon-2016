@@ -13,7 +13,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        // Commands\Inspire::class,
+        Commands\UpdateBuoy::class,
+        Commands\ListBuoy::class
     ];
 
     /**
@@ -24,7 +25,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        // Run the task daily at 1:00 & 13:00
+        $schedule->command('buoys:update')->twiceDaily(1, 13)->withoutOverlapping();
     }
 }
