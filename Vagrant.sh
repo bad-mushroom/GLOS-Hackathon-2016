@@ -78,4 +78,3 @@ apt-get install -y curl
 # GLOS App Setup
 cd /var/www
 cp .env.example .env
-./artisan migrate

@@ -37,13 +37,14 @@ vagrant ssh
 
 cd /var/www
 composer install
+./artisan migrate
 ```
 
 With that you should be able to visit the web app from your browser at http://glos.dev
 
 #### Database
 
-@TBD
+There's a single database called `glos` that will be configured by the provisioning script.
 
 ### Testing
 
