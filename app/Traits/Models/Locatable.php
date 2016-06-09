@@ -2,7 +2,8 @@
 
 namespace App\Traits\Models;
 
-trait Locatable {
+trait Locatable 
+{
 	public function scopeDistance($query, $dist, $location)
 	{
 		return $query->whereRaw('st_distance(location, POINT(' . $location . ')) < ' . $dist);
