@@ -14,13 +14,14 @@ class CreateBuoysTable extends Migration
     {
         Schema::create('buoys', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('lastDataUpdate');
             $table->decimal('zValue', 3, 2);
             $table->string('shortName', 25);
             $table->string('longName', 100);
-            $table->string('stationUrl')>nullable();
+            $table->string('stationUrl')->nullable();
             $table->string('state', 2);
             $table->string('ndbcHandler');
-            $table->string('imageUrl')>nullable();
+            $table->string('imageUrl')->nullable();
             $table->text('description');
             $table->boolean('active');
             $table->timestamps();
