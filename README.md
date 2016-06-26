@@ -46,6 +46,22 @@ With that you should be able to visit the web app from your browser at http://gl
 
 There's a single database called `glos` that will be configured by the provisioning script.
 
+### Front End Tooling
+
+Unless you are actually editing/working with the Sass/CSS & Javascript you can skip this part. Otherwise:
+
+Make sure you have Nodejs and NPM installed on your local machine, then run...
+
+```bash
+npm install
+```
+
+Followed by: 
+
+```bash
+gulp
+```
+
 ### Testing
 
 @TBD

@@ -4,7 +4,7 @@
 
 // Main page
 Route::get('/', function () {
-    return view('welcome');
+    return view('landing'); // temporary - will handle via controller
 });
 
 // User Authentication

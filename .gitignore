@@ -1,3 +1,4 @@
+.DS_Store
 /vendor
 /node_modules
 /public/storage
@@ -6,3 +7,7 @@ Homestead.json
 .env
 Vagrant_Debian8.box
 .vagrant
+/resources/assets/sass/bootstrap
+/resources/assets/sass/bourbon
+/resources/assets/js/jquery/
+/resources/assets/js/jquery-easing/
