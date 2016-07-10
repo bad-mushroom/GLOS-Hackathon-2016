@@ -6,6 +6,9 @@
 Route::get('/', function () {
     return view('landing'); // temporary - will handle via controller
 });
+Route::get('reference', function () {
+    return view('reference'); // temporary - for checking layout
+});
 
 // User Authentication
 Route::get('user/login', 'Auth\AuthController@getLogin');

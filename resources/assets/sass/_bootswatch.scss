@@ -6,7 +6,8 @@ $web-font-path: "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"
 @import url($web-font-path);
 
 html,
-body {
+body,
+.height-width-100 {
     width: 100%;
     height: 100%;
 }
