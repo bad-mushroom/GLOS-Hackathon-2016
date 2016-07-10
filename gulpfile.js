@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 var elixir = require('laravel-elixir');
 
-// require('laravel-elixir-browserify-official');
+require('laravel-elixir-browserify-official');
 // require("laravel-elixir-browsersync-official")
 
 /*
@@ -32,37 +32,40 @@ elixir(function(mix) {
 /*--- Pull into public/assets --- */
 
 	// fonts
-	mix.copy(paths.npmBootstrapSass + 'fonts', paths.public + 'fonts');
+	// mix.copy(paths.npmBootstrapSass + 'fonts', paths.public + 'fonts');
 
 /*--- Pull into resources/assets --- */
 
-	// sass
-	mix.copy(paths.npmBootstrapSass + 'stylesheets/bootstrap', paths.resources + 'sass/bootstrap');
-	mix.copy(paths.bourbon, paths.resources + 'sass/bourbon');
+	// // sass
+	// mix.copy(paths.npmBootstrapSass + 'stylesheets/bootstrap', paths.resources + 'sass/bootstrap');
+	// mix.copy(paths.bourbon, paths.resources + 'sass/bourbon');
 	
-	// js
-	mix.copy(paths.jquery, paths.resources + 'js/jquery');
-	mix.copy(paths.jqueryEasing, paths.resources + 'js/jquery-easing');
+	// // js
+	// mix.copy(paths.jquery, paths.resources + 'js/jquery');
+	// mix.copy(paths.jqueryEasing, paths.resources + 'js/jquery-easing');
 	
 /*--- Compile Sass --- */
     mix.sass('app.scss', paths.public + 'css/app.css');
 
 /*--- Combine JS --- */
-	mix.scripts([
-		'jquery/jquery.js',
-		'jquery-easing/jquery.easing.1.3.js'
-			],
-		paths.public + 'js/jquery-build.js',
-		paths.resources + 'js/'
-	);
+	// mix.scripts([
+	// 	'jquery/jquery.js',
+	// 	'jquery-easing/jquery.easing.1.3.js'
+	// 		],
+	// 	paths.public + 'js/jquery-build.js',
+	// 	paths.resources + 'js/'
+	// );
 
-	mix.scripts([
-		'theme/bootstrap-custom.js',
-		'theme/grayscale.js'
-			],
-		paths.public + 'js/theme.js',
-		paths.resources + 'js/'
-	);
+	// mix.scripts([
+	// 	'theme/bootstrap-custom.js',
+	// 	'theme/grayscale.js'
+	// 		],
+	// 	paths.public + 'js/theme.js',
+	// 	paths.resources + 'js/'
+	// );
+/*--- React --- */
+
+  mix.browserify('react/pulse.js', paths.public + 'js/pulse.js');
 
 });
 
