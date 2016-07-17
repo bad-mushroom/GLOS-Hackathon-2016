@@ -8,11 +8,11 @@
                     <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand page-scroll" href="#page-top">
-                    <i class="fa fa-play-circle"></i>  <span class="light">Start</span> Bootstrap
+                    <span class="light"><i class="glyphicon glyphicon-stats"></i>  Great Lakes</span> Pulse
                 </a>
             </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
+        {{--     <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
                 <ul class="nav navbar-nav">
                     <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
@@ -29,7 +29,7 @@
                         <a class="page-scroll" href="#contact">Contact</a>
                     </li>
                 </ul>
-            </div>
+            </div> --}}
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->

@@ -43,6 +43,7 @@
     <!-- jQuery Base -->
     <script src="assets/js/jquery-build.js"></script>
     <script src="assets/js/theme.js"></script>
+    <script src="assets/js/pulse.js"></script>
 
     @section('addltjs')
     @show
