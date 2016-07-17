@@ -7,15 +7,23 @@ Route::get('/', function () {
     return view('landing'); // temporary - will handle via controller
 });
 
-Route::group(['prefix' => 'api'], function() {
+// --- API
+
+/**
+ * Technically this API is available to third party apps. For the sake of time
+ * we're not going to authenticate at the app level and just assume all
+ * requests are from us.
+ */
+Route::group(['prefix' => 'api', 'namespace' => 'Api'], function() {
 
     // Return a list of available dashboards
-    Route::get('dashboards', 'Api\Dashboards@idnex');
+    Route::get('dashboards', 'Dashboards@index');
 
     // Return a specific dashboard config
-    Route::get('dashboards/{dashboard?}', 'Api\Dashboards@show');
-}
+    Route::get('dashboards/{dashboard?}', 'Dashboards@show');
+});
 
+// --- Account Auth/Registration
 
 // User Authentication
 Route::get('user/login', 'Auth\AuthController@getLogin');
