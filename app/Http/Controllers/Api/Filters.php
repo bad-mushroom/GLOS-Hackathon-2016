@@ -22,6 +22,6 @@ class Filters extends \App\Http\Controllers\Controller
 
     public function show($name)
     {
-        return $this->filter::where('shortname', $name)->first();
+        return $this->filter->with('applets')->where('shortname', $name)->first();
     }
 }

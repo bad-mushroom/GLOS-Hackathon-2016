@@ -17,11 +17,11 @@ class Applets extends \App\Http\Controllers\Controller
     
     public function index()
     {
-        return $this->applet->orderBy('shortname')->get();
+        return $this->applet->with('filters')->orderBy('shortname')->get();
     }
     
     public function show($name)
     {
-        return $this->applet->where('shortname', $name)->first();
+        return $this->applet->with('filters')->where('shortname', $name)->first();
     }
 }
