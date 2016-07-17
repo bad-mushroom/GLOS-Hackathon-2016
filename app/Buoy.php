@@ -7,9 +7,14 @@ use App\Traits\Models\Locatable;
 
 class Buoy extends Model
 {
-    use Locatable;
+	use Locatable;
 
-    public $guarded = ['id'];
-    protected $table = 'buoys';
-    protected $geofields = ['location'];
+	public $guarded = ['id'];
+	protected $table = 'buoys';
+	protected $geofields = ['location'];
+
+	public function scopeActive($query)
+	{
+		return $query->where('active', 1);
+	}
 }
