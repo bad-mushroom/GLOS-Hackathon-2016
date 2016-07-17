@@ -7,6 +7,16 @@ Route::get('/', function () {
     return view('landing'); // temporary - will handle via controller
 });
 
+Route::group(['prefix' => 'api'], function() {
+
+    // Return a list of available dashboards
+    Route::get('dashboards', 'Api\Dashboards@idnex');
+
+    // Return a specific dashboard config
+    Route::get('dashboards/{dashboard?}', 'Api\Dashboards@show');
+}
+
+
 // User Authentication
 Route::get('user/login', 'Auth\AuthController@getLogin');
 Route::post('user/login', 'Auth\AuthController@postLogin');
