@@ -22,8 +22,17 @@ Route::group(['prefix' => 'api', 'namespace' => 'Api'], function() {
     // Return a list of available dashboards
     Route::get('dashboards', 'Dashboards@index');
 
-    // Return a specific dashboard config
+    // Return a specific dashboard config (will be "all")
     Route::get('dashboards/{dashboard?}', 'Dashboards@show');
+
+    // Return a list of available filters (i.e. 'boater', 'swimmer', etc)
+    Route::get('filters', 'Filters@index');
+
+    // Return a list of available applets
+    Route::get('applets', 'Applets@index');
+
+    // Return a specific applet config
+    Route::get('applets/{applet?}', 'Applets@show');
 });
 
 // --- Account Auth/Registration
