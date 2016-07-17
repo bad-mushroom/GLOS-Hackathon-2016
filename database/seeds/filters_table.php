@@ -28,5 +28,17 @@ class filters_table extends Seeder
 			'shortname' => 'fisher',
 			'fullname' 	=> 'Sport Fisher',
 		]);
+
+		DB::table('filters')->insert([
+			'id'		=> 4,
+			'shortname' => 'beach',
+			'fullname' 	=> 'Beachgoer',
+		]);
+
+		DB::table('filters')->insert([
+			'id'		=> 5,
+			'shortname' => 'citizen',
+			'fullname' 	=> 'Concerned Citizen',
+		]);
 	}
 }
