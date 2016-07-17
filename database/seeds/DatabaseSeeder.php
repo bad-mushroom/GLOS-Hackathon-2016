@@ -12,6 +12,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(dashboards_table::class);
+        $this->call(filters_table::class);
         $this->call(applets_table::class);
     }
 }

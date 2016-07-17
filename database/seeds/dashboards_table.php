@@ -13,12 +13,7 @@ class dashboards_table extends Seeder
     {
         // Demo/Testing
         DB::table('dashboards')->insert([
-            'name' => 'demo',
-        ]);
-        
-        // Swim
-        DB::table('dashboards')->insert([
-            'name' => 'swimming',
+            'name' => 'all',
         ]);
     }
 }
