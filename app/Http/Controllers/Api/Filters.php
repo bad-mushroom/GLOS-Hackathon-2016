@@ -17,7 +17,7 @@ class Filters extends \App\Http\Controllers\Controller
 
     public function index()
     {
-        return $this->filter->orderBy('shortname')->get();
+        return $this->filter->with('applets')->orderBy('shortname')->get();
     }
 
     public function show($name)

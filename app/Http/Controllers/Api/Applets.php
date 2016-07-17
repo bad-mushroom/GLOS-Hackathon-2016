@@ -4,10 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
-
 use App\Applet;
 
-class Applets extends \App\Http\ControllersController
+class Applets extends \App\Http\Controllers\Controller
 {
     protected $applet;
     

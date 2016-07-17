@@ -13,12 +13,12 @@ class applets_table extends Seeder
     {
         DB::table('applets')->insert([
             'shortname' => 'waveheight',
-            'fullname' => 'Wave Height',
+            'fullname'  => 'Wave Height',
         ]);
 
         DB::table('applets')->insert([
             'shortname' => 'watertemp',
-            'fullname' => 'Water Temperature',
+            'fullname'  => 'Water Temperature',
         ]);
     }
 }

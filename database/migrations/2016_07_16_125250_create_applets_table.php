@@ -19,7 +19,6 @@ class CreateAppletsTable extends Migration
             $table->string('shortname', 25)->unique();
             // Full 'human friendly' name
             $table->string('fullname', 50)->unique();
-            
         });
     }
 

@@ -10,4 +10,9 @@ class Filter extends Model
 	public $table = 'filters';
 
 	protected $guarded = ['id'];
+	
+	public function applets()
+	{
+		return $this->belongsToMany('App\Applet', 'applets_filters');
+	}
 }
