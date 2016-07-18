@@ -47,7 +47,7 @@ class UpdateBuoy extends Command
         // The GLOS API returns text/plain, need to JSON'fy it.
         foreach (json_decode($response->getBody()) as $buoyUpdate) { 
             $buoy = \App\Buoy::firstOrNew(['buoyId' => $buoyUpdate->id]);
-            $buoy->location = $buoyUpdate->lat . ',' . $buoyUpdate->lon;
+            $buoy->location = $buoyUpdate->lon . ',' . $buoyUpdate->lat; // flipped for calculation (instead of lat,lon)
             $buoy->lastDataUpdate = $buoyUpdate->lastDataUpdate;
             $buoy->zValue = $buoyUpdate->zvalue;
             $buoy->shortName = $buoyUpdate->shortName;
