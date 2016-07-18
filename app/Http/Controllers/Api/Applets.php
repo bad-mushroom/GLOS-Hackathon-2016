@@ -9,7 +9,7 @@ use App\Buoy;
 
 class Applets extends \App\Http\Controllers\Controller
 {
-	public $defaultLocation = '-83.7430, 42.2808'; // Made with ❤️ in Ann Arbor
+	public $defaultLocation = '42.2808,-83.7430'; // Made with ❤️ in Ann Arbor
 	protected $applet;
 
 	public function __construct(Applet $applet)
@@ -25,11 +25,15 @@ class Applets extends \App\Http\Controllers\Controller
 	public function show($name, $location = null)
 	{
 		if (!$location) {
-			//return response('Missing location', 422);
+			$location = $this->defaultLocation;
 		}
+		
+		// Latitude, Longitude needs to be swapped around for calculation
+		$l = explode(',', $location);
+		$location = $l[1] . ',' . $l[0];
+		$range = ($this->applet->distance_range) ? $this->applet->distance_range : Buoy::DEFAULT_DISTANCE_RANGE;
 		// 1 mile is 1609.34 meters
-		$test = Buoy::Distance(50 * 1609.34, $this->defaultLocation)->get();
-		dd($test);
-		return $this->applet->with('filters')->where('shortname', $name)->first();
+		$buoys = Buoy::Distance($range * 1609.34, $location)->with('sensors')->get(); dd($buoys);
+		return $this->applet->with('filters')->where('shortname', $name)->first(); 
 	}
 }

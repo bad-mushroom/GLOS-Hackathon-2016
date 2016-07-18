@@ -8,4 +8,9 @@ class Sensor extends Model
 {
 	public $guarded = ['id'];
 	protected $table = 'sensors';
+	
+	public function buoy()
+	{
+		return $this->belongsTo('App\Buoy', 'buoy_id', 'buoyId');
+	}
 }
