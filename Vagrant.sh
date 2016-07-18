@@ -52,6 +52,12 @@ echo "$MYCNF" >> /home/vagrant/.my.cnf
 chown vagrant:vagrant /home/vagrant/.my.cnf
 chmod 600 /home/vagrant/.my.cnf
 
+# Install MySQL 5.7.x
+wget http://dev.mysql.com/get/mysql-apt-config_0.7.0-1debian8_all.deb
+dpkg -i mysql-apt-config_0.7.0-1debian8_all.deb
+apt-get update -y
+apt-get install -y mysql-community-server
+
 # Create Database
 
 mysql -u root -pvagrant -e "CREATE DATABASE glos"
@@ -64,9 +70,6 @@ chmod 777 /var/www/storage -R
 wget --quiet https://getcomposer.org/composer.phar
 mv composer.phar /usr/local/bin/composer
 chmod +x /usr/local/bin/composer
-
-# Update Package Repo
-apt-get update -y
 
 # Front-End Build
 apt-get install -y nodejs
