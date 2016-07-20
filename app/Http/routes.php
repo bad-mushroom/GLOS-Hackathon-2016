@@ -4,10 +4,10 @@
 
 // Main page
 Route::get('/', function () {
-    return view('landing'); // temporary - will handle via controller
+	return view('landing'); // temporary - will handle via controller
 });
 Route::get('reference', function () {
-    return view('reference'); // temporary - for checking layout
+	return view('reference'); // temporary - for checking layout
 });
 
 // --- API
@@ -19,20 +19,34 @@ Route::get('reference', function () {
  */
 Route::group(['prefix' => 'api', 'namespace' => 'Api'], function() {
 
-    // Return a list of available dashboards
-    Route::get('dashboards', 'Dashboards@index');
+	// Return a list of available dashboards
+	Route::get('dashboards', 'Dashboards@index');
 
-    // Return a specific dashboard config (will be "all")
-    Route::get('dashboards/{dashboard?}', 'Dashboards@show');
+	// Return a specific dashboard config (will be "all")
+	Route::get('dashboards/{dashboard?}', 'Dashboards@show');
 
-    // Return a list of available filters (i.e. 'boater', 'swimmer', etc)
-    Route::get('filters', 'Filters@index');
+	// Return a list of available filters (i.e. 'boater', 'swimmer', etc)
+	Route::get('filters', 'Filters@index');
 
-    // Return a list of available applets
-    Route::get('applets', 'Applets@index');
+	// Return a list of available applets
+	Route::get('applets', 'Applets@index');
 
-    // Return a specific applet config
-    Route::get('applets/{applet?}', 'Applets@show');
+	// Return a specific applet config
+	Route::get('applets/{applet?}', 'Applets@show');
+});
+
+// --- Development
+
+/**
+ * These routes will show raw data useful for development
+ */
+Route::group(['prefix' => 'dev', 'namespace' => 'Dev'], function() {
+
+	// Return a list of all buoys
+	Route::get('buoys', 'Buoys@index');
+
+	// Show buoy locations as points on a map
+	Route::get('buoys/map', 'Buoys@map');
 });
 
 // --- Account Auth/Registration
@@ -58,5 +72,5 @@ Route::post('password/reset', 'Auth\PasswordController@postReset');
 // --- Authenticated Routes
 
 Route::get('user', ['middleware' => 'auth', function() {
-    // redirect to /user/login for now
+	// redirect to /user/login for now
 }]);
