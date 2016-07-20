@@ -14,7 +14,6 @@ class CreateBuoysTable extends Migration
     {
         Schema::create('buoys', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('buoyId');
             $table->integer('buoyId')->references('buoy_id')->on('sensors')->unsigned();
             $table->string('lastDataUpdate');
             $table->decimal('zValue', 3, 2);
