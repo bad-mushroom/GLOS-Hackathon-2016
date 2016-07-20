@@ -33,13 +33,19 @@
 			$.getJSON( "/dev/buoys", function(  ) {
 			})
 			.done(function(data) {
-				$.each(data, function( key, buoy ) { console.log(buoy);
+				$.each(data, function( key, buoy ) {
+					var infowindow = new google.maps.InfoWindow({
+						content: '<div id="content"><div id="siteNotice"></div><h1>' + buoy.longName + '</h1><ul><li>BuoyID: ' + buoy.buoyId + '</li><li>Last Updated: ' + buoy.lastDataUpdate + '</li></ul></div>'
+					});
 					var points = buoy.location.split(',');
 
 					var marker = new google.maps.Marker({
 						position: new google.maps.LatLng(points[1], points[0]),
 						map: map,
 						title: buoy.longName
+					});
+					marker.addListener('click', function() {
+						infowindow.open(map, marker);
 					});
 
 					marker.setMap(map);
