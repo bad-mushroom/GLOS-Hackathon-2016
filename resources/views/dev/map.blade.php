@@ -10,53 +10,42 @@
 				margin: 0;
 				padding: 0;
 			}
-			#map {
+			#map_canvas {
 				height: 100%;
 			}
 		</style>
 	</head>
 	<body>
 		<div id="map_canvas"></div>
-		  <script>
+		<script src="/assets/js/jquery-build.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?v=3&amp;key=AIzaSyDvRbr2FOe5GOlzSpyk9phv2sa2ZhoWMzE&callback=mapInit" async defer></script>
 
-      // This example uses the Google Maps JavaScript API's Data layer
-      // to create a rectangular polygon with 2 holes in it.
+		<script>
+		function mapInit() {
 
-      function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 6,
-          center: {lat: -33.872, lng: 151.252},
-        });
+			var mapOptions = {
+				zoom: 7,
+				center: new google.maps.LatLng(42.2808, -83.7430),
+			};
 
-        // // Define the LatLng coordinates for the outer path.
-        // var outerCoords = [
-        //   {lat: -32.364, lng: 153.207}, // north west
-        //   {lat: -35.364, lng: 153.207}, // south west
-        //   {lat: -35.364, lng: 158.207}, // south east
-        //   {lat: -32.364, lng: 158.207}  // north east
-        // ];
-		// 
-        // // Define the LatLng coordinates for an inner path.
-        // var innerCoords1 = [
-        //   {lat: -33.364, lng: 154.207},
-        //   {lat: -34.364, lng: 154.207},
-        //   {lat: -34.364, lng: 155.207},
-        //   {lat: -33.364, lng: 155.207}
-        // ];
-		// 
-        // // Define the LatLng coordinates for another inner path.
-        // var innerCoords2 = [
-        //   {lat: -33.364, lng: 156.207},
-        //   {lat: -34.364, lng: 156.207},
-        //   {lat: -34.364, lng: 157.207},
-        //   {lat: -33.364, lng: 157.207}
-        // ];
+			var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
 
-        // //map.data.add({geometry: new google.maps.Data.Polygon([outerCoords,
-        //                                                       innerCoords1,
-        //                                                       innerCoords2])})
-      }
-    </script>
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvRbr2FOe5GOlzSpyk9phv2sa2ZhoWMzE&callback=initMap" async defer></script>
+			$.getJSON( "/dev/buoys", function(  ) {
+			})
+			.done(function(data) {
+				$.each(data, function( key, buoy ) { console.log(buoy);
+					var points = buoy.location.split(',');
+
+					var marker = new google.maps.Marker({
+						position: new google.maps.LatLng(points[1], points[0]),
+						map: map,
+						title: buoy.longName
+					});
+
+					marker.setMap(map);
+				});
+			});
+		}
+		</script>
 	</body>
 </html>
