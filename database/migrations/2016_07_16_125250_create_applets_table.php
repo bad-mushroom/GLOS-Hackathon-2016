@@ -19,6 +19,10 @@ class CreateAppletsTable extends Migration
             $table->string('shortname', 25)->unique();
             // Full 'human friendly' name
             $table->string('fullname', 50)->unique();
+            // Distance in miles from user's location where this is valid
+            $table->integer('distance_range');
+            // Time data is valid for
+            $table->integer('time_range');
         });
     }
 

@@ -4,9 +4,16 @@ namespace App\Traits\Models;
 
 trait Locatable 
 {
+	/**
+	 * [scopeDistance description]
+	 * @param  [type] $query    [description]
+	 * @param  float $dist     degrees
+	 * @param  [type] $location [description]
+	 * @return [type]           [description]
+	 */
 	public function scopeDistance($query, $dist, $location)
 	{
-		return $query->whereRaw('st_distance(location, POINT(' . $location . ')) < ' . $dist);
+		return $query->whereRaw('st_distance_sphere(location, POINT(' . $location . ')) < ' . $dist );
 	}
 	
 	// --- MySQL POINT Support
