@@ -33,6 +33,8 @@ Route::group(['prefix' => 'api', 'namespace' => 'Api'], function() {
 	// Return a list of available applets
 	Route::get('applets', 'Applets@index');
 
+	Route::get('applets/{applet?}/{location?}', 'Applets@show');
+	
 	// Return a specific applet config
 	Route::get('applets/{applet?}', 'Applets@show');
 });
@@ -50,8 +52,6 @@ Route::group(['prefix' => 'dev', 'namespace' => 'Dev'], function() {
 	// Show buoy locations as points on a map
 	Route::get('buoys/map', 'Buoys@map');
 
-	Route::get('applets/{applet?}/{location?}', 'Applets@show');
-	Route::get('applets/{applet?}', 'Applets@show');
 
 });
 
