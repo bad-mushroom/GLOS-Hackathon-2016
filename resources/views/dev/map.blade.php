@@ -18,7 +18,7 @@
 	<body>
 		<div id="map_canvas"></div>
 		<script src="/assets/js/jquery-build.js"></script>
-		<script src="https://maps.googleapis.com/maps/api/js?v=3&amp;key=AIzaSyDvRbr2FOe5GOlzSpyk9phv2sa2ZhoWMzE&callback=mapInit" async defer></script>
+		<script src="https://maps.googleapis.com/maps/api/js?v=3&amp;key={{ env('KEY_GOOGLE_MAPS') }}&callback=mapInit" async defer></script>
 
 		<script>
 		function mapInit() {
