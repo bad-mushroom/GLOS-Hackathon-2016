@@ -37,6 +37,9 @@ Route::group(['prefix' => 'api', 'namespace' => 'Api'], function() {
 	
 	// Return a specific applet config
 	Route::get('applets/{applet?}', 'Applets@show');
+	
+	// Geocode request
+	Route::get('search/{address}', 'Search@show');
 });
 
 // --- Development
