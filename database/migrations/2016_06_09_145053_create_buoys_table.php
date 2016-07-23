@@ -16,11 +16,11 @@ class CreateBuoysTable extends Migration
             $table->increments('id');
             $table->integer('buoyId')->references('buoy_id')->on('sensors')->unsigned();
             $table->string('lastDataUpdate');
-            $table->decimal('zValue', 3, 2);
+            $table->decimal('zValue', 3, 2)->nullable();
             $table->string('shortName', 25);
             $table->string('longName', 100)->nullable();
             $table->string('stationUrl')->nullable();
-            $table->string('state', 2);
+            $table->string('state', 2)->nullable();
             $table->string('ndbcHandler')->nullable();
             $table->string('imageUrl')->nullable();
             $table->text('description')->nullable();
