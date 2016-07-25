@@ -36,19 +36,26 @@ class Applets extends \App\Http\Controllers\Controller
 		$range = ($this->applet->distance_range) ? $this->applet->distance_range : Buoy::DEFAULT_DISTANCE_RANGE;
 
 		// 1 mile is 1609.34 meters
-		$buoy = Buoy::Distance($range * 1609.34, $location)->with(['sensors' => function($query) use ($name) {
+		$buoys = Buoy::Distance($range * 1609.34, $location)->with(['sensors' => function($query) use ($name) {
 			$query->where('shortName', '=', $name);
-		}])->first(); 
+		}])->get(); 
 
-		if ($buoy) {
-			$client = new \GuzzleHttp\Client();
-			$response = $client->request('GET', 'http://data.glos.us/glos_obs/obs.glos?sids=' . $buoy->sensors[0]->sensor_id . '&pt=15&pid=' . $buoy->buoyId . '&hours=1', []);
-
-			if ($response->getStatusCode() !== 200) {
-				return $this->error("Server responded with {$response->getStatusCode()}");
+		if ($buoys) {
+			foreach ($buoys as $buoy) {
+				foreach ($buoy->sensors as $sensor) {
+					if ($sensor->shortName !== $name) continue;
+					
+					$client = new \GuzzleHttp\Client();
+					$response = $client->request('GET', 'http://data.glos.us/glos_obs/obs.glos?sids=' . $sensor->sensor_id . '&pt=15&pid=' . $buoy->buoyId . '&hours=1', []);
+					
+					if (strlen($response->getBody()) < 100) continue;
+					
+					if ($response->getStatusCode() == 200) {
+						return $response->getBody();
+					}
+				}
 			}
-			
-			return $response->getBody();
+
 		}
 
 		return $this->applet->with('filters')->where('shortname', $name)->first(); 
