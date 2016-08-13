@@ -168,5 +168,7 @@ To get Water Temperature from the closest buoy based on location:
 
 ## Notes
 
-It seems that all requests respond with an HTTP 200, even if a resource isn't found - just returns an empty array. This is kind of bad design. You'll see somewhere in the code where I'm checking if the response size to try and catch this.
+* It seems that all requests respond with an HTTP 200, even if a resource isn't found - just returns an empty array. This is kind of bad design. You'll see somewhere in the code where I'm checking if the response size to try and catch this.
+* There isn't any (documented) limit on the number of requests you can make.
+* Feel free to contact me with any questions!
 
